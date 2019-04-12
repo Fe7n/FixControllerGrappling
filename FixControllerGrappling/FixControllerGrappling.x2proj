@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>a585a306-8f99-4c9e-b3b5-5705cf7f24c1</Guid>
+    <Name>FixControllerGrappling</Name>
+    <Description>Fix that annoying bug with grappling using a controller. 
+Grappling will now act like grenade targeting. To grapple, you will have to select the ability. You can now raise and lower the elevation and select to your hearts content.
+
+Thanks to MrNiceUK for his pointing me in the right direction of how to make this mod.
+
+Hopefully, the community highlander will integrate this change.
+tags=war of the chosen, gameplay, grapple</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>FixControllerGrappling</AssemblyName>
+    <RootNamespace>FixControllerGrappling</RootNamespace>
+    <ProjectGuid>{145570e4-a651-4c10-bed4-ec13da4c9eed}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\FixControllerGrappling\" />
+    <Folder Include="Src\FixControllerGrappling\Classes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEngine.ini" />
+    <Content Include="Config\XComFixControllerGrappling.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGame.ini" />
+    <Content Include="ModPreview.jpg" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="Src\FixControllerGrappling\Classes\FCG_UITacticalHUD_AbilityContainer.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\FixControllerGrappling\Classes\X2DownloadableContentInfo_FixControllerGrappling.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>

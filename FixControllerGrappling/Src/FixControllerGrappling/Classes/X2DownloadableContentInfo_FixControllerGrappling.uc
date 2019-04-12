@@ -1,0 +1,1 @@
+class X2DownloadableContentInfo_FixControllerGrappling extends X2DownloadableContentInfo;
