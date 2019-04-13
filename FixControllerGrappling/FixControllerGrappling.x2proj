@@ -24,9 +24,7 @@ tags=war of the chosen, gameplay, grapple</Description>
   <ItemGroup>
     <Content Include="Config\XComEditor.ini" />
     <Content Include="Config\XComEngine.ini" />
-    <Content Include="Config\XComFixControllerGrappling.ini">
-      <SubType>Content</SubType>
-    </Content>
+    <Content Include="Config\XComFixControllerGrappling.ini" />
     <Content Include="Config\XComGame.ini" />
     <Content Include="ModPreview.jpg" />
     <Content Include="ReadMe.txt" />

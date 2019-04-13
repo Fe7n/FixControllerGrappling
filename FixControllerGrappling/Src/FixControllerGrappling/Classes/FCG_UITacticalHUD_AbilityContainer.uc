@@ -1,14 +1,15 @@
 class FCG_UITacticalHud_AbilityContainer extends UITacticalHud_AbilityContainer config(FixControllerGrappling);
 
-var config array<name> RequiresTargetingActivation;
+var config array<string> RequiresTargetingActivation;
 
-function bool RequiresActivation(class<X2TargetingMethod> targetingClass)
+static function bool RequiresActivation(class targetingClass)
 {
 	local int i;
 
-	for(i = 0; i < RequiresTargetingActivation.Length; i++)
+	for(i = 0; i < default.RequiresTargetingActivation.Length; i++)
 	{
-		if (targetingClass.IsA(RequiresTargetingActivation[i]))
+		if (ClassIsChildOf(targetingClass, 
+			class(DynamicLoadObject(default.RequiresTargetingActivation[i], class'class'))))
 		{
 			return true;
 		}
@@ -35,11 +36,8 @@ simulated function bool AbilityRequiresTargetingActivation(int Index)
 
 	if (AbilityState != none)
 	{
-		// Start Issue #476
 		return RequiresActivation(AbilityState.GetMyTemplate().TargetingMethod);
-		// End Issue #476
 	}
-
 	return false;
 }
 
@@ -47,7 +45,7 @@ simulated function bool IsTargetingMethodActivated()
 {
 	if (TargetingMethod != none)
 	{
-		return RequiresActivation(TargetingMethod.Class);
+		return RequiresActivation(TargetingMethod.class);
 	}
 
 	return false;
