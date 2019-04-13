@@ -35,9 +35,7 @@ simulated function bool AbilityRequiresTargetingActivation(int Index)
 
 	if (AbilityState != none)
 	{
-		// Start Issue #476
 		return RequiresActivation(AbilityState.GetMyTemplate().TargetingMethod);
-		// End Issue #476
 	}
 
 	return false;
