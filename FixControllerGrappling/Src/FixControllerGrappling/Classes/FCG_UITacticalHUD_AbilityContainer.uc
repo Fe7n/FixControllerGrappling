@@ -1,19 +1,19 @@
 class FCG_UITacticalHud_AbilityContainer extends UITacticalHud_AbilityContainer config(FixControllerGrappling);
 
-var config array<string> RequiresTargetingActivation;
+var config array<name> RequiresTargetingActivation;
 
-static function bool RequiresActivation(class targetingClass)
+static function bool RequiresActivation(Object obj)
 {
 	local int i;
 
 	for(i = 0; i < default.RequiresTargetingActivation.Length; i++)
 	{
-		if (ClassIsChildOf(targetingClass, 
-			class(DynamicLoadObject(default.RequiresTargetingActivation[i], class'class'))))
+		if (obj.IsA(default.RequiresTargetingActivation[i]))
 		{
 			return true;
 		}
 	}
+
 	return false;
 }
 
@@ -36,8 +36,9 @@ simulated function bool AbilityRequiresTargetingActivation(int Index)
 
 	if (AbilityState != none)
 	{
-		return RequiresActivation(AbilityState.GetMyTemplate().TargetingMethod);
+		return static.RequiresActivation(class'XcomEngine'.static.GetClassDefaultObject(AbilityState.GetMyTemplate().TargetingMethod));
 	}
+
 	return false;
 }
 
@@ -45,7 +46,7 @@ simulated function bool IsTargetingMethodActivated()
 {
 	if (TargetingMethod != none)
 	{
-		return RequiresActivation(TargetingMethod.class);
+		return static.RequiresActivation(TargetingMethod);
 	}
 
 	return false;
